@@ -1,10 +1,15 @@
+"""API Testing."""
 from http import HTTPStatus
 
 from api import models
 from django.test import Client, TestCase
 
+
 class TaskiAPITestCase(TestCase):
+    """Taski API."""
+
     def setUp(self):
+        """Set Up Test."""
         self.guest_client = Client()
 
     def test_list_exists(self):
