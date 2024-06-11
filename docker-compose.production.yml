@@ -12,6 +12,8 @@ services:
       - pg_data_production:/var/lib/postgresql/data
   backend:
     image: docdockdocke/taski_backend
+    depends_on:
+      - db
     env_file: .env
     volumes:
       - static_volume:/backend_static
@@ -24,6 +26,9 @@ services:
   gateway:
     image: docdockdocke/taski_gateway
     env_file: .env
+    depends_on:
+      - backend
+      - frontend
     volumes:
       - static_volume:/staticfiles/
     ports:
